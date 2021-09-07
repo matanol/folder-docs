@@ -1,0 +1,14 @@
+{
+  "name": "folder-docs",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/mattyusdev/folder-docs.git",
+  "author": "Matan Oliel",
+  "license": "MIT",
+  "dependencies": {
+    "directory-tree": "^2.3.1"
+  },
+  "scripts": {
+    "start": "nodemon src/"
+  }
+}
