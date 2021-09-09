@@ -6,9 +6,13 @@
   "author": "Matan Oliel",
   "license": "MIT",
   "dependencies": {
-    "directory-tree": "^2.3.1"
+    "cross-spawn": "^7.0.3",
+    "directory-tree": "^2.3.1",
+    "yargs": "^17.1.1"
   },
   "scripts": {
-    "start": "nodemon src/"
+    "docs-init": "node scripts/docs-init --path /../demo",
+    "start-client": "node scripts/start-client",
+    "start-dev": "yarn docs-init && yarn start-client"
   }
 }
