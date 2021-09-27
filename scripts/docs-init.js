@@ -1,7 +1,9 @@
 const FS = require("fs");
 const path = require("path");
 const getDirTree = require("directory-tree");
-// const argv = require("./utils/argv.utils");
+// const yargs = require("yargs/yargs");
+// const { hideBin } = require("yargs/helpers");
+// const argv = yargs(hideBin(process.argv)).argv;
 
 const addDocFileToData = (docsData, dir) => {
   for (const item of dir.children) {
@@ -27,11 +29,15 @@ const readDocs = (tree) => {
   return docsData;
 };
 
+// const DIR_TREE_PATH = argv.prod ? process.cwd : path.join(__dirname, "../demo");
+const DIR_TREE_PATH = process.cwd();
+
 // FIXME: MAKE DIR CONFIGURABLE
-const dirTree = getDirTree(path.join(__dirname, "../demo"));
+const dirTree = getDirTree(DIR_TREE_PATH, { exclude: /node_modules/ });
 console.log("[Success] - Collected directory tree data");
 const docsFiles = readDocs(dirTree);
 console.log("[Success] - Collected docs files data");
+console.log(docsFiles);
 
 module.exports = {
   dirTree,

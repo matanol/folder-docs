@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "start": "open-cli http://localhost:8080 && nodemon",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production --config ./webpack.config.prod.js"
   },
   "dependencies": {
     "open-cli": "^7.0.1",

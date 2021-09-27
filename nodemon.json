@@ -1,0 +1,7 @@
+{
+  "watch": ["../../../../**/*"],
+  "ext": "md",
+  "ignore": ["node_modules/", "README.md"],
+  "quiet": "true",
+  "exec": "webpack serve --mode=development --config ./webpack.config.js"
+}

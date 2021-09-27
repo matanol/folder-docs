@@ -109,3 +109,8 @@ poc/
 
 # Helpers
 helpers/
+
+# build
+build/
+dist/
+lib/

@@ -4,6 +4,10 @@ const dirTree = __DIR_TREE__;
 const docsFiles = __DOCS_FILES__;
 
 const HelloWorld = () => {
+  React.useEffect(() => {
+    console.log("dir tree", dirTree);
+    console.log("docs files", docsFiles);
+  }, []);
   return (
     <>
       <h6 style={{ color: "red" }}>{JSON.stringify(dirTree)}</h6>

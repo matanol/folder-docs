@@ -1,18 +1,37 @@
 {
-  "name": "folder-docs",
+  "name": "docs-folder",
   "version": "1.0.0",
-  "main": "src/index.js",
   "repository": "https://github.com/mattyusdev/folder-docs.git",
   "author": "Matan Oliel",
   "license": "MIT",
+  "main": "./lib/scripts/main.js",
+  "bin": {
+    "docs-folder": "./lib/scripts/main.js"
+  },
+  "files": [
+    "lib"
+  ],
   "dependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "cross-spawn": "^7.0.3",
     "directory-tree": "^2.3.1",
+    "html-webpack-plugin": "^5.3.2",
+    "nodemon": "^2.0.12",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1",
     "yargs": "^17.1.1"
   },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6"
+  },
   "scripts": {
-    "docs-init": "node scripts/docs-init --path /../demo",
-    "start-client": "node scripts/start-client",
-    "start-dev": "yarn docs-init && yarn start-client"
+    "build:client": "yarn --cwd ./client build",
+    "build:scripts": "babel --extensions .js --out-dir lib/scripts scripts/",
+    "build:package": "yarn build:client && yarn build:scripts",
+    "publish": "yarn build:client",
+    "docs-folder": "node ./lib/scripts/main.js"
   }
 }

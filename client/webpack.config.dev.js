@@ -4,9 +4,11 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { dirTree, docsFiles } = require("../scripts/docs-init");
 
+const BUILD_DIR = path.resolve(__dirname, "build");
+
 module.exports = {
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: BUILD_DIR,
     filename: "bundle.js",
   },
   resolve: {
@@ -15,6 +17,23 @@ module.exports = {
       react: path.join(__dirname, "node_modules", "react"),
     },
     extensions: [".js", ".jsx"],
+  },
+  devServer: {
+    compress: true,
+    port: 8080,
+    hot: true,
+  },
+  stats: {
+    assets: false,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    colors: true,
+    entrypoints: false,
+    hash: false,
+    modules: false,
+    timings: false,
+    version: false,
   },
   module: {
     rules: [
