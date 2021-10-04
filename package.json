@@ -14,14 +14,15 @@
   "dependencies": {
     "cross-spawn": "^7.0.3",
     "directory-tree": "^2.3.1",
-    "html-webpack-plugin": "^5.3.2",
     "nodemon": "^2.0.12",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.1",
     "yargs": "^17.1.1"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "webpack": "^5.53.0",
+    "webpack-dev-server": "^4.2.1",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack-cli": "^4.8.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
