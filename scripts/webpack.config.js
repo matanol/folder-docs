@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { dirTree, docsFiles } = require("./docs-init");
 
 const BUILD_DIR = path.join(__dirname, "../build");
@@ -12,6 +11,7 @@ module.exports = {
   output: {
     path: BUILD_DIR,
     filename: "bundle.js",
+    clean: true,
   },
   devServer: {
     static: {
@@ -19,7 +19,7 @@ module.exports = {
     },
     compress: true,
     port: 8080,
-    hot: true,
+    // hot: true,
   },
   mode: "development",
   stats: {
@@ -57,7 +57,6 @@ module.exports = {
   //   ],
   // },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: path.join(LIB_DIR, "index.html"),
     }),

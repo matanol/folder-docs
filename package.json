@@ -4,15 +4,14 @@
   "repository": "https://github.com/mattyusdev/folder-docs.git",
   "author": "Matan Oliel",
   "license": "MIT",
-  "main": "./lib/scripts/main.js",
+  "main": "./lib/scripts/index.js",
   "bin": {
-    "docs-folder": "./lib/scripts/main.js"
+    "docs-folder": "./lib/scripts/index.js"
   },
   "files": [
     "lib"
   ],
   "dependencies": {
-    "clean-webpack-plugin": "^4.0.0",
     "cross-spawn": "^7.0.3",
     "directory-tree": "^2.3.1",
     "html-webpack-plugin": "^5.3.2",
@@ -22,16 +21,18 @@
     "webpack-dev-server": "^4.2.1",
     "yargs": "^17.1.1"
   },
+  "peerDependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6"
+    "@babel/preset-env": "^7.15.6",
+    "rimraf": "^3.0.2"
   },
   "scripts": {
     "build:client": "yarn --cwd ./client build",
     "build:scripts": "babel --extensions .js --out-dir lib/scripts scripts/",
-    "build:package": "yarn build:client && yarn build:scripts",
+    "build:package": "rimraf lib && yarn build:client && yarn build:scripts",
     "publish": "yarn build:client",
-    "docs-folder": "node ./lib/scripts/main.js"
+    "docs-folder": "node ./lib/scripts/index.js"
   }
 }
