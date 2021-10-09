@@ -1,6 +1,0 @@
-{
-  "watch": ["../demo/**/*"],
-  "ext": "md",
-  "quiet": "true",
-  "exec": "webpack serve --mode=development --config ./webpack.config.dev.js"
-}

@@ -30,7 +30,7 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build:client": "yarn --cwd ./client build",
+    "build:client": "rimraf lib/client && yarn --cwd ./client build:package",
     "build:scripts": "babel --extensions .js --out-dir lib/scripts scripts/",
     "build:package": "rimraf lib && yarn build:client && yarn build:scripts",
     "publish": "yarn build:client",

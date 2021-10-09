@@ -7,17 +7,17 @@ const BUILD_DIR = path.join(__dirname, "../build");
 const LIB_DIR = path.join(__dirname, "../client");
 
 module.exports = {
-  entry: path.join(LIB_DIR, "bundle.js"),
+  entry: path.join(__dirname, "injectTest.js"),
   output: {
     path: BUILD_DIR,
-    filename: "bundle.js",
+    filename: "injectTest.js",
     clean: true,
   },
   devServer: {
     static: {
-      directory: BUILD_DIR,
+      directory: LIB_DIR,
     },
-    compress: true,
+    // compress: true,
     port: 8080,
     // hot: true,
   },
@@ -57,12 +57,15 @@ module.exports = {
   //   ],
   // },
   plugins: [
+    new webpack.DefinePlugin({
+      __MY_TEST__: JSON.stringify(docsFiles),
+      // __DIR_TREE__: JSON.stringify(dirTree),
+      // __DOCS_FILES__: JSON.stringify(docsFiles),
+    }),
     new HtmlWebPackPlugin({
       template: path.join(LIB_DIR, "index.html"),
-    }),
-    new webpack.DefinePlugin({
-      __DIR_TREE__: JSON.stringify(dirTree),
-      __DOCS_FILES__: JSON.stringify(docsFiles),
+      inject: "body",
+      // inject: "head",
     }),
   ],
 };
