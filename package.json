@@ -36,7 +36,7 @@
   "scripts": {
     "build:client": "rimraf lib/client && yarn --cwd ./src/client build",
     "build:core_and_scripts": "rimraf lib/core && rimraf lib/scripts && babel --extensions .js --ignore src/client --out-dir lib src/",
-    "build:package": "rimraf lib && yarn build:client && yarn build:core",
+    "build:package": "rimraf lib && yarn build:client && yarn build:core_and_scripts",
     "docs-folder": "node ./lib/scripts/start.js"
   }
 }
