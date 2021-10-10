@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
 const nodemon = require("nodemon");
-const path = require("path");
-
-const mainFilePath = path.join(__dirname, "./main.js");
+const open = require("open");
+const { devServerExecPath } = require("../client-injector");
 
 nodemon({
   watch: [`${process.cwd()}/**/*`],
   ext: "md",
   ignore: ["node_modules/", "README.md"],
   quiet: "true",
-  exec: `node \"${mainFilePath}\"`,
+  exec: `node \"${devServerExecPath}\"`,
 });
+
+open("http://localhost:8080");

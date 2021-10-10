@@ -1,23 +1,27 @@
 import * as React from "react";
 
 const useGetTree = () => {
-  const [tree, setTree] = React.useState(null);
+  const [dirTree, setDirTree] = React.useState(null);
+  const [docFiles, setDocFiles] = React.useState(null);
 
   React.useEffect(() => {
     // @ts-ignore
-    setTree(window.MY_TEST);
+    setDirTree(window.dirTree);
+    // @ts-ignore
+    setDocFiles(window.docFiles);
   }, []);
 
   React.useEffect(() => {
     console.log("react");
 
     window.addEventListener(
-      "build",
+      "inject",
       function (e) {
-        // @ts-ignore
         console.log("dispatched REACT!!", e);
         // @ts-ignore
-        setTree(e.target.MY_TEST);
+        setDirTree(e.target.dirTree);
+        // @ts-ignore
+        setDocFiles(e.target.docFiles);
       },
       false
     );
@@ -28,7 +32,7 @@ const useGetTree = () => {
     };
   }, []);
 
-  return { tree, isLoading: !Boolean(tree) };
+  return { dirTree, docFiles, isLoading: !(dirTree && docFiles) };
 };
 
 export default useGetTree;

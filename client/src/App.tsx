@@ -4,13 +4,22 @@ import useGetTree from "./useGetTree";
 import "./App.css";
 
 function App() {
-  const { tree, isLoading } = useGetTree();
+  const { dirTree, docFiles, isLoading } = useGetTree();
+
+  React.useEffect(() => {
+    console.log("dirTree", dirTree);
+    console.log("docFiles", docFiles);
+  }, [dirTree, docFiles]);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {isLoading ? <span>Loading...</span> : <p>{JSON.stringify(tree)}</p>}
+        {isLoading ? (
+          <span>Loading...</span>
+        ) : (
+          <p>{JSON.stringify(docFiles)}</p>
+        )}
       </header>
     </div>
   );

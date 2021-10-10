@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./lib/scripts/index.js",
   "bin": {
-    "docs-folder": "./lib/scripts/index.js"
+    "docs-folder": "./lib/core/scripts/start.js"
   },
   "files": [
     "lib"
@@ -14,6 +14,7 @@
   "dependencies": {
     "directory-tree": "^2.3.1",
     "nodemon": "^2.0.12",
+    "open": "^8.3.0",
     "yargs": "^17.1.1"
   },
   "peerDependencies": {
@@ -33,10 +34,9 @@
     "webpack-dev-server": "^4.2.1"
   },
   "scripts": {
-    "build:client": "rimraf lib/client && yarn --cwd ./client build:package",
-    "build:scripts": "babel --extensions .js --out-dir lib/scripts scripts/",
-    "build:package": "rimraf lib && yarn build:client && yarn build:scripts",
-    "publish": "yarn build:client",
-    "docs-folder": "node ./lib/scripts/index.js"
+    "build:client": "rimraf lib/client && yarn --cwd ./client build",
+    "build:core": "babel --extensions .js --out-dir lib/core core/",
+    "build:package": "rimraf lib && yarn build:client && yarn build:core",
+    "docs-folder": "node ./lib/core/scripts/start.js"
   }
 }
