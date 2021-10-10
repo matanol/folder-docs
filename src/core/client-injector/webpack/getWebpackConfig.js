@@ -3,13 +3,13 @@ const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const getWebpackConfig = () => {
-  const { dirTree, docFiles } = require("../files-loader");
+  const { dirTree, docFiles } = require("../../files-loader");
 
   const BUILD_DIR = path.join(__dirname, "../build");
-  const LIB_DIR = path.join(__dirname, "../../client");
+  const LIB_DIR = path.join(__dirname, "../../../client");
 
   return {
-    entry: path.join(__dirname, "injector.js"),
+    entry: path.join(__dirname, "../injector.js"),
     output: {
       path: BUILD_DIR,
       filename: "injectTest.js",
@@ -29,7 +29,7 @@ const getWebpackConfig = () => {
       children: false,
       chunks: false,
       chunkModules: false,
-      colors: true,
+      colors: false,
       entrypoints: false,
       hash: false,
       modules: false,

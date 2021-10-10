@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./lib/scripts/index.js",
   "bin": {
-    "docs-folder": "./lib/core/scripts/start.js"
+    "docs-folder": "./lib/scripts/start.js"
   },
   "files": [
     "lib"
@@ -34,9 +34,9 @@
     "webpack-dev-server": "^4.2.1"
   },
   "scripts": {
-    "build:client": "rimraf lib/client && yarn --cwd ./client build",
-    "build:core": "babel --extensions .js --out-dir lib/core core/",
+    "build:client": "rimraf lib/client && yarn --cwd ./src/client build",
+    "build:core_and_scripts": "rimraf lib/core && rimraf lib/scripts && babel --extensions .js --ignore src/client --out-dir lib src/",
     "build:package": "rimraf lib && yarn build:client && yarn build:core",
-    "docs-folder": "node ./lib/core/scripts/start.js"
+    "docs-folder": "node ./lib/scripts/start.js"
   }
 }

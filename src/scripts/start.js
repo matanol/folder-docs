@@ -2,7 +2,7 @@
 
 const nodemon = require("nodemon");
 const open = require("open");
-const { devServerExecPath } = require("../client-injector");
+const { devServerExecPath } = require("../core/client-injector/webpack");
 
 nodemon({
   watch: [`${process.cwd()}/**/*`],
