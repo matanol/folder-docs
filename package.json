@@ -45,7 +45,7 @@
   },
   "scripts": {
     "pre-publish:client": "rimraf lib/client && yarn --cwd ./src/client build",
-    "pre-publish:core": "rimraf lib/core && rimraf lib/scripts && babel --extensions .js --ignore src/client --out-dir lib src/",
+    "pre-publish:core-and-scripts": "rimraf lib/core && rimraf lib/scripts && babel --extensions .js --ignore src/client --out-dir lib src/",
     "pre-publish:package": "rimraf lib && yarn build:client && yarn build:core_and_scripts",
     "docs-folder": "node ./lib/scripts/start.js",
     "prettier": "prettier --write ."
