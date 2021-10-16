@@ -1,18 +1,18 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const getWebpackConfig = () => {
-  const { dirTree, docFiles } = require("../../files-loader");
+  const { dirTree, docFiles } = require('../../files-loader');
 
-  const BUILD_DIR = path.join(__dirname, "../build");
-  const LIB_DIR = path.join(__dirname, "../../../client");
+  const BUILD_DIR = path.join(__dirname, '../build');
+  const LIB_DIR = path.join(__dirname, '../../../client');
 
   return {
-    entry: path.join(__dirname, "../injector.js"),
+    entry: path.join(__dirname, '../injector.js'),
     output: {
       path: BUILD_DIR,
-      filename: "injectTest.js",
+      filename: 'injectTest.js',
       clean: true,
     },
     devServer: {
@@ -23,7 +23,7 @@ const getWebpackConfig = () => {
       port: 8080,
       // hot: true,
     },
-    mode: "development",
+    mode: 'development',
     stats: {
       assets: false,
       children: false,
@@ -54,8 +54,8 @@ const getWebpackConfig = () => {
         __DOC_FILES__: JSON.stringify(docFiles),
       }),
       new HtmlWebPackPlugin({
-        template: path.join(LIB_DIR, "index.html"),
-        inject: "body",
+        template: path.join(LIB_DIR, 'index.html'),
+        inject: 'body',
         // inject: "head",
       }),
     ],

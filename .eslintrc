@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier"],
+  "globals": {
+    "__DIR_TREE__": true,
+    "__DOC_FILES__": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "global-require": "off",
+    "no-restricted-syntax": "off",
+    "no-param-reassign": "off",
+    "no-console": "off"
+  }
+}

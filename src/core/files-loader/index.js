@@ -1,4 +1,4 @@
 module.exports = {
-  dirTree: require("./dirTree"),
-  docFiles: require("./docFiles"),
+  dirTree: require('./dirTree'),
+  docFiles: require('./docFiles'),
 };

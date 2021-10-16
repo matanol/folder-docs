@@ -1,8 +1,8 @@
-const FS = require("fs");
-const dirTree = require("./dirTree");
-const { isInArray } = require("../utils");
+const FS = require('fs');
+const dirTree = require('./dirTree');
+const { isInArray } = require('../utils');
 
-const extensions = [".md", ".mdx"];
+const extensions = ['.md', '.mdx'];
 
 const getDocFiles = (docFilesObj, dir) => {
   for (const item of dir.children) {
@@ -14,7 +14,7 @@ const getDocFiles = (docFilesObj, dir) => {
       } catch (error) {
         console.error(error);
       }
-    } else if (item.type === "directory") {
+    } else if (item.type === 'directory') {
       getDocFiles(docFilesObj, item);
     }
   }
