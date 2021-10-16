@@ -19,9 +19,8 @@ const getWebpackConfig = () => {
       static: {
         directory: LIB_DIR,
       },
-      // compress: true,
       port: 8080,
-      // hot: true,
+      hot: false,
     },
     mode: 'development',
     stats: {
@@ -36,27 +35,28 @@ const getWebpackConfig = () => {
       timings: false,
       version: false,
     },
-    // module: {
-    //   rules: [
-    //     {
-    //       test: /\.(js|jsx)$/,
-    //       exclude: /node_modules/,
-    //       use: {
-    //         loader: "babel-loader",
-    //       },
-    //     },
-    //   ],
-    // },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
+      ],
+    },
     plugins: [
       new webpack.DefinePlugin({
-        // __MY_TEST__: JSON.stringify(docsFiles),
         __DIR_TREE__: JSON.stringify(dirTree),
         __DOC_FILES__: JSON.stringify(docFiles),
       }),
       new HtmlWebPackPlugin({
         template: path.join(LIB_DIR, 'index.html'),
         inject: 'body',
-        // inject: "head",
       }),
     ],
   };
