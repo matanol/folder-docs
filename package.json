@@ -18,13 +18,16 @@
     "yargs": "^17.1.1"
   },
   "peerDependencies": {
-    "html-webpack-plugin": "^5.3.2",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.1",
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
-    "babel-loader": "^8.2.2"
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^5.3.2",
+    "val-loader": "^4.0.0",
+    "webpack": "^5.53.0",
+    "webpack-chokidar-plugin": "^1.0.5",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1",
+    "webpack-watch-files-plugin": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
@@ -36,18 +39,24 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
+    "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.3.2",
+    "markdown-loader": "^6.0.0",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
+    "val-loader": "^4.0.0",
     "webpack": "^5.53.0",
+    "webpack-chokidar-plugin": "^1.0.5",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.1"
+    "webpack-dev-server": "^4.2.1",
+    "webpack-watch-files-plugin": "^1.2.0"
   },
   "scripts": {
     "pre-publish:client": "rimraf lib/client && yarn --cwd ./src/client build",
     "pre-publish:core-and-scripts": "rimraf lib/core && rimraf lib/scripts && babel --extensions .js --ignore src/client --out-dir lib src/",
     "pre-publish:package": "rimraf lib && yarn build:client && yarn build:core_and_scripts",
-    "docs-folder": "node ./lib/scripts/start.js",
+    "docs-folder:dev": "node ./src/scripts/start.js",
+    "docs-folder:prod": "node ./lib/scripts/start.js",
     "prettier": "prettier --write ."
   }
 }

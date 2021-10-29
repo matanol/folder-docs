@@ -1,12 +1,16 @@
 const path = require('path');
-const webpack = require('webpack');
+const { DefinePlugin } = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+// const WatchExternalFilesPlugin = require('webpack-watch-files-plugin').default;
 
 const getWebpackConfig = () => {
-  const { dirTree, docFiles } = require('../../files-loader');
+  const { dirTree } = require('../../files-loader');
 
   const BUILD_DIR = path.join(__dirname, '../build');
-  const LIB_DIR = path.join(__dirname, '../../../client');
+
+  // FIXME: FOR PROD AND DEV
+  // const LIB_DIR = path.join(__dirname, '../../../client');
+  const LIB_DIR = path.join(__dirname, '../../../../lib/client');
 
   return {
     entry: path.join(__dirname, '../injector.js'),
@@ -20,7 +24,11 @@ const getWebpackConfig = () => {
         directory: LIB_DIR,
       },
       port: 8080,
-      hot: false,
+      hot: 'only',
+      open: true,
+    },
+    watchOptions: {
+      ignored: /node_modules/,
     },
     mode: 'development',
     stats: {
@@ -47,17 +55,32 @@ const getWebpackConfig = () => {
             },
           },
         },
+        {
+          test: /\.md$/,
+          use: [
+            {
+              loader: 'html-loader',
+            },
+            {
+              loader: 'markdown-loader',
+            },
+          ],
+        },
       ],
     },
     plugins: [
-      new webpack.DefinePlugin({
+      new DefinePlugin({
         __DIR_TREE__: JSON.stringify(dirTree),
-        __DOC_FILES__: JSON.stringify(docFiles),
+        // __DOC_FILES__: JSON.stringify(docFiles),
+        __MAIN_DIR__: JSON.stringify(path.join(process.cwd(), '/demo')),
       }),
       new HtmlWebPackPlugin({
         template: path.join(LIB_DIR, 'index.html'),
         inject: 'body',
       }),
+      // new WatchExternalFilesPlugin({
+      //   files: [`${process.cwd()}/demo/**/*.md`],
+      // }),
     ],
   };
 };

@@ -8,7 +8,8 @@
   "plugins": ["prettier"],
   "globals": {
     "__DIR_TREE__": true,
-    "__DOC_FILES__": true
+    "__DOC_FILES__": true,
+    "__MAIN_DIR__": true
   },
   "rules": {
     "prettier/prettier": [
